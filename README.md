@@ -4,6 +4,6 @@ This simple React application allows users to geenrate 3 random sports and eithe
 
 This application features React hooks: useState and useEffect, Vitest for unit tests, and mobile friendly user interface
 
-![alt text](https://github.com/dmackeyward/davids-sports-app/blob/main/screenshots/0.jpg?raw=true)
-![alt text](https://github.com/dmackeyward/davids-sports-app/blob/main/screenshots/1.jpg?raw=true)
+![alt text](https://github.com/dmackeyward/davids-sports-app/blob/dev/screenshots/0.jpg?raw=true)
+![alt text](https://github.com/dmackeyward/davids-sports-app/blob/dev/screenshots/1.jpg?raw=true)
 
