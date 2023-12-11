@@ -1,8 +1,9 @@
-# React + Vite
+# David's Sports Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This simple React application allows users to geenrate 3 random sports and either requests for 3 new sports, re-order the existing sports throughout page reloads, and to remove a single sport
 
-Currently, two official plugins are available:
+This application features React hooks: useState and useEffect, Vitest for unit tests, and mobile friendly user interface
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![alt text](https://github.com/dmackeyward/davids-sports-app/blob/main/screenshots/0.jpg?raw=true)
+![alt text](https://github.com/dmackeyward/davids-sports-app/blob/main/screenshots/1.jpg?raw=true)
+
