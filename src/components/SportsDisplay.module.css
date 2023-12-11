@@ -42,29 +42,24 @@
 
   @media (max-width: 768px) {
     .buttonsContainer button {
-      padding: 8px 15px; /* Slightly smaller buttons */
-      font-size: 0.9rem; /* Slightly smaller font size */
+      padding: 8px 15px; 
+      font-size: 0.9rem; 
     }
   
     .sportsContainer {
-      gap: 15px; /* Reduced gap */
+      gap: 15px; 
     }
   }
   
-  /* Small screens (Mobile Phones) */
+
   @media (max-width: 480px) {
     .buttonsContainer button {
-      padding: 6px 10px; /* Smaller buttons for mobile */
-      font-size: 0.8rem; /* Smaller font size for mobile */
+      padding: 6px 10px; 
+      font-size: 0.8rem; 
     }
   
     .sportsContainer, .sportsCardsContainer {
-      gap: 10px; /* Reduced gap for mobile */
+      gap: 10px; 
     }
   }
 
-  @media (hover: hover) {
-    .button:hover, .button:active {
-      background-color: green; /* or your active color */
-    }
-  }

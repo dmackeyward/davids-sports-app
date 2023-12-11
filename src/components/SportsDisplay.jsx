@@ -14,18 +14,28 @@ const SportsDisplay = () => {
   const [fullSportsList, setFullSportsList] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const blurButtons = () => {
+    const buttons = document.querySelectorAll('.button');
+    buttons.forEach(button => button.blur());
+  };
+
   useEffect(() => {
-    if (!sports.length) {
-      setLoading(true);
-      const repo = new ContentRepository();
-      repo.getFeaturedSports().then(fetchedSportsList => {
-        setFullSportsList(fetchedSportsList);
+    setLoading(true);
+    const repo = new ContentRepository();
+    repo.getFeaturedSports().then(fetchedSportsList => {
+      setFullSportsList(fetchedSportsList);
+      
+      const savedSports = JSON.parse(localStorage.getItem('selectedSports'));
+      if (savedSports && savedSports.length) {
+        setSports(savedSports);
+      } else {
         const shuffled = fetchedSportsList.sort(() => 0.5 - Math.random());
         setSports(shuffled.slice(0, 3));
-        setLoading(false);
-      });
-    }
-  }, [sports.length]);
+      }
+      
+      setLoading(false);
+    });
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('selectedSports', JSON.stringify(sports));
@@ -33,19 +43,21 @@ const SportsDisplay = () => {
 
   const handleRemoveSport = (sportToRemove) => {
     setSports(currentSports => {
-        const updatedSports = currentSports.filter(sport => sport.name !== sportToRemove.name);
-
-        const availableSports = fullSportsList.filter(sport => 
-            !updatedSports.some(currentSport => currentSport.name === sport.name));
-
-        if (availableSports.length > 0) {
-            const randomSport = availableSports[Math.floor(Math.random() * availableSports.length)];
-            updatedSports.push(randomSport); 
-        }
-
-        return updatedSports;
+      const updatedSports = currentSports.filter(sport => sport.name !== sportToRemove.name);
+  
+      const availableSports = fullSportsList.filter(sport => 
+          !updatedSports.some(currentSport => currentSport.name === sport.name));
+  
+      if (availableSports.length > 0) {
+        const randomSport = availableSports[Math.floor(Math.random() * availableSports.length)];
+        updatedSports.push(randomSport); 
+      }
+  
+      blurButtons();
+      return updatedSports;
     });
   };
+  
 
   if (loading) {
     return <Loader />
@@ -57,6 +69,7 @@ const SportsDisplay = () => {
   
     let shuffledNewSports = newAvailableSports.sort(() => 0.5 - Math.random());
 
+    blurButtons();
     setSports(shuffledNewSports.slice(0, 3));
     
   };
@@ -69,6 +82,8 @@ const SportsDisplay = () => {
         const j = Math.floor(Math.random() * (i + 1));
         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap elements
       }
+
+      blurButtons();
       return shuffled;
     });
   };
