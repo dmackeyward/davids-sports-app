@@ -45,8 +45,10 @@
   justify-content: center;
 }
 
-.removeButton:hover {
-  background-color: #ff3333; 
+@media (hover: hover) and (pointer: fine) {
+  .removeButton:hover {
+    background-color: #ff3333; 
+  }
 }
 
 

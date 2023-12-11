@@ -24,8 +24,10 @@
   transition: background-color 0.3s, transform 0.1s;
 }
 
-.buttonsContainer button:hover {
-  background-color: #45a049; 
+@media (hover: hover) and (pointer: fine) {
+  .buttonsContainer button:hover {
+    background-color: #45a049; 
+  }
 }
 
 .buttonsContainer button:active {
