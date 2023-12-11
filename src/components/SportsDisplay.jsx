@@ -5,34 +5,42 @@ import Loader from './Loader';
 import styles from './SportsDisplay.module.css'; 
 
 const SportsDisplay = () => {
-  const [sports, setSports] = useState([]);
+
+  const [sports, setSports] = useState(() => {
+    const savedSports = JSON.parse(localStorage.getItem('selectedSports'));
+    return savedSports || [];
+  });
+
   const [fullSportsList, setFullSportsList] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    const repo = new ContentRepository();
-    repo.getFeaturedSports().then(fetchedSportsList => {
-      setFullSportsList(fetchedSportsList); 
-      const shuffled = fetchedSportsList.sort(() => 0.5 - Math.random());
-      setSports(shuffled.slice(0, 3));
-      setLoading(false);
-    });
-  }, []);
+    if (!sports.length) {
+      setLoading(true);
+      const repo = new ContentRepository();
+      repo.getFeaturedSports().then(fetchedSportsList => {
+        setFullSportsList(fetchedSportsList);
+        const shuffled = fetchedSportsList.sort(() => 0.5 - Math.random());
+        setSports(shuffled.slice(0, 3));
+        setLoading(false);
+      });
+    }
+  }, [sports.length]);
+
+  useEffect(() => {
+    localStorage.setItem('selectedSports', JSON.stringify(sports));
+  }, [sports]);
 
   const handleRemoveSport = (sportToRemove) => {
     setSports(currentSports => {
-        // Filter out the sport to remove
         const updatedSports = currentSports.filter(sport => sport.name !== sportToRemove.name);
 
-        // Get a list of sports that are not currently displayed
         const availableSports = fullSportsList.filter(sport => 
             !updatedSports.some(currentSport => currentSport.name === sport.name));
 
-        // Pick a random sport from the availableSports list
         if (availableSports.length > 0) {
             const randomSport = availableSports[Math.floor(Math.random() * availableSports.length)];
-            updatedSports.push(randomSport); // Add the random sport to the list
+            updatedSports.push(randomSport); 
         }
 
         return updatedSports;
