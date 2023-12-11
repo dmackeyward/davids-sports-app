@@ -56,8 +56,9 @@ const SportsDisplay = () => {
       !sports.some(displayedSport => displayedSport.name === fullSport.name));
   
     let shuffledNewSports = newAvailableSports.sort(() => 0.5 - Math.random());
-  
+
     setSports(shuffledNewSports.slice(0, 3));
+    
   };
   
   

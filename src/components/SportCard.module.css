@@ -94,3 +94,9 @@
     font-size: 10px;
   }
 }
+
+@media (hover: hover) {
+  .button:hover, .button:active {
+    background-color: green; /* or your active color */
+  }
+}

@@ -62,3 +62,9 @@
       gap: 10px; /* Reduced gap for mobile */
     }
   }
+
+  @media (hover: hover) {
+    .button:hover, .button:active {
+      background-color: green; /* or your active color */
+    }
+  }
