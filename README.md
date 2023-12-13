@@ -1,6 +1,6 @@
 # David's Sports Application
 
-This simple React application allows users to geenrate 3 random sports and either requests for 3 new sports, re-order the existing sports throughout page reloads, and to remove a single sport
+This simple React application allows users to generate 3 random sports and either requests for 3 new sports, re-order the existing sports throughout page reloads, and to remove a single sport
 
 This application features:
 
